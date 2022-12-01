@@ -1,7 +1,7 @@
 // Controller - Auth / Login
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../../models/user');
+const User = require('../../models/user.model');
 
 const login = async (req, res) => {
 
@@ -23,7 +23,7 @@ const login = async (req, res) => {
         }
 
         // Create JWT Token
-        const token = jwt.sign({email}, 'JWT_SECRET', { expiresIn: '2d' });
+        const token = jwt.sign({id: user._id}, 'JWT_SECRET', { expiresIn: '2d' });
 
         const addUser = await User.findByIdAndUpdate(user._id, { token }, { new: true }); 
 

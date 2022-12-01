@@ -2,9 +2,10 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { connectToDb } = require('./db');
+const { connectToDb } = require('./config/db.config');
 
-const AuthRouter = require('./routes/auth-router');
+const AuthRouter = require('./routes/auth.router');
+const UserRouter = require('./routes/user.router');
 const PORT = process.env.PORT || 3000;
 
 require('dotenv').config();
@@ -26,3 +27,4 @@ connectToDb((connected) => {
 
 // Auth Routes
 app.use('/auth', AuthRouter);
+app.use('/user', UserRouter);

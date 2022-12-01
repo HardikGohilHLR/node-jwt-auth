@@ -2,10 +2,10 @@
   "name": "node-jwt-auth",
   "version": "1.0.0",
   "description": "Authentication in Node with JWT",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node main.js",
-    "start:dev": "nodemon main.js",
+    "start": "node src/main.js",
+    "start:dev": "nodemon src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hardik Gohil",

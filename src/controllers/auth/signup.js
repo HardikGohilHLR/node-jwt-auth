@@ -1,7 +1,7 @@
 // Controller - Auth / Signup
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../../models/user');
+const User = require('../../models/user.model');
 
 const signup = async (req, res) => {
 
@@ -12,7 +12,7 @@ const signup = async (req, res) => {
 		const user = await User.findOne({email});
 
         if(user) {
-            throw new Error('User Already Exists!');
+            throw new Error('User Already Exists...');
         }
 
         // Encrypt Password
@@ -26,7 +26,7 @@ const signup = async (req, res) => {
         res.status(201).json(addUser);
     }
     catch(err) {
-        res.status(400).json({message: err.message});
+        res.status(400).json({ message: err.message });
     }
 }
 
