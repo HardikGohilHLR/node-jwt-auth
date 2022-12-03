@@ -1,9 +1,24 @@
 // Controller - Auth / Signup
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Joi = require('joi');
+
 const User = require('../../models/user.model');
+const { handleError } = require('../../common/functions');
 
 const signup = async (req, res) => {
+
+    const loginSchema = Joi.object({
+        username: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+    }).options({ abortEarly: false });
+
+    const { error } = loginSchema.validate(req?.body);
+
+    if (error) {
+        return res.status(400).json(handleError(error?.details));
+    }
 
     const { username, email, password } = req.body;
 

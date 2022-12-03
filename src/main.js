@@ -26,5 +26,5 @@ connectToDb((connected) => {
 });
 
 // Auth Routes
-app.use('/auth', AuthRouter);
-app.use('/user', UserRouter);
+app.use('/api/auth', AuthRouter);
+app.use('/api/user', UserRouter);
